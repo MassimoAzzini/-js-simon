@@ -34,15 +34,17 @@ button {
   text-align: center;
 }
 
-#n-random,
-#n-user,
-#check {
+.n-random,
+.n-user,
+.cont-check {
   display: flex;
   justify-content: space-around;
   margin: 30px 0;
 }
 
-.box {
+.random,
+.user,
+.check {
   width: 50px;
   font-size: 30px;
   text-align: center;
