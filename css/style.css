@@ -59,9 +59,25 @@ button {
 }
 
 .true {
-    background-color: green;
+  background-color: green;
+  width: 50px;
+  font-size: 30px;
+  text-align: center;
+  line-height: 50px;
+  aspect-ratio: 1 / 1;
+  border: 1px solid black;
 }
 
 .false {
   background-color: red;
+  width: 50px;
+  font-size: 30px;
+  text-align: center;
+  line-height: 50px;
+  aspect-ratio: 1 / 1;
+  border: 1px solid black;
+}
+
+.pointer {
+  pointer-events: none;
 }

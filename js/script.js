@@ -4,14 +4,18 @@ const checkBox = document.querySelector('.cont-check')
 const btn = document.querySelector('button')
 
 
-
 const randomNumber = [];
 const userNumber = [];
-const comparate = [];
+
 
 
 btn.addEventListener('click', function(){
-  
+  // resetto gli array e l'html
+  reset();
+
+  btn.classList.add('pointer')
+
+  // creo i numeri random e li stampo creando dei box
   createUniqueBombNumber(1, 10);
   
   for(let i = 0; i < randomNumber.length; i++){
@@ -21,24 +25,14 @@ btn.addEventListener('click', function(){
   
   setTimeout(function(){
     
-    // -----DA SISTEMARE----
-    const randomBox = document.querySelectorAll('.random');
-    for(let i = 0; i < NodeList.length; i++){
-      randomBox[i].innerHTML = '';
-
-    } 
-
-    console.log(randomBox)
-    
-    
-    
-    
+    // dopo 5 secondi nascondo tutta la riga dei numeri random
+    randomContainer.classList.add('hide')
+   
   }, 5000);
 
+
   setTimeout(function(){
-    
-    
-    
+    // dopo 5,5 secondi chiedo 5 numeri all'utente 
     while(userNumber.length < 5){
     
       const numberPrompt = parseInt(prompt ('Inserisci i numeri che hai visto nello stesso ordine'))
@@ -47,19 +41,42 @@ btn.addEventListener('click', function(){
       console.log(userNumber)
     
     }
-    
+    // stampo i numeri dell' utente nei box
     for(let i = 0; i < userNumber.length; i++){
       printInPage(userBox, userNumber[i], 'user');
+
+      // confronto i numeri nell'array dell'utente con quelli random e stampo nei box se hanno indovinato o se hanno sbagliato
+      if(userNumber[i] === randomNumber[i]){
+        printInPage(checkBox, 'V', 'true');
+      }else{
+        printInPage(checkBox, 'X', 'false');
+      }
+
     }
+
+    // faccio viusalizzare di nuovo i numeri random
+    randomContainer.classList.remove('hide')
+
+    btn.classList.remove('pointer')
+
     
-    
-    
-    
-  }, 6000);
-  
+  }, 5500);
+
   
 });
 
+
+
+
+// Funzione per reset
+
+function reset(){
+  randomContainer.innerHTML = '';
+  userBox.innerHTML = '';
+  checkBox.innerHTML = '';
+  randomNumber.splice(0, randomNumber.length);
+  userNumber.splice(0, userNumber.length);
+};
 
 
 // Funzione per stampare in pagina
